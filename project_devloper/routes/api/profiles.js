@@ -88,6 +88,7 @@ router.get('/user/:user_id', (req, res) => {
 
   Profile.findOne({ user: req.params.user_id })
     .populate('user', ['name', 'avatar'])
+    // what populate is doing is bringing in user model .. and adding name , avatarto profile
     .then(profile => {
       if (!profile) {
         errors.noprofile = 'There is no profile for this user';
