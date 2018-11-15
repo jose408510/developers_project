@@ -28,7 +28,7 @@ mongoose
 
 // User Routes 
 app.use('/api/users',users)
-app.use('/api/profile',profile)
+app.use('/api/profiles',profile)
 app.use('/api/post',post)
 
 
