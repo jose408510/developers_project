@@ -145,8 +145,8 @@ router.post(
         // Update
         Profile.findOneAndUpdate(
           { user: req.user.id },
-          { $set: profileFields },
-          { new: true }
+          { $set: profileFields }
+          // { new: true } deprecited warning removed this 
         ).then(profile => res.json(profile));
       } else {
         // Create
