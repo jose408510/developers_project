@@ -28,7 +28,7 @@ router.get(
     const errors = {};
 
     Profile.findOne({ user: req.user.id })
-      .populate('user', ['name', 'avatar'])
+      .populate('User', ['name', 'avatar'])
       .then(profile => {
         if (!profile) {
           errors.noprofile = 'There is no profile for this user';
@@ -47,16 +47,16 @@ router.get('/all', (req, res) => {
   const errors = {};
 
   Profile.find()
-    .populate('user', ['name', 'avatar'])
-    .then(profiles => {
-      if (!profiles) {
-        errors.noprofile = 'There are no profiles';
+    .populate('User', ['name', 'avatar'])
+    .then(profiles => 
+      {
+      if (!profiles || profiles.length === 0) {
+        errors.noprofile = "There are no profiles";
         return res.status(404).json(errors);
-      }
-
+        }
       res.json(profiles);
     })
-    .catch(err => res.status(404).json({ profile: 'There are no profiles' }));
+    .catch(err =>  res.status(404).json({ profile: 'There are no profiles' }));
 });
 
 // @route   GET api/profile/handle/:handle
@@ -67,7 +67,7 @@ router.get('/handle/:handle', (req, res) => {
   const errors = {};
 
   Profile.findOne({ handle: req.params.handle })
-    .populate('user', ['name', 'avatar'])
+    .populate('User', ['name', 'avatar'])
     .then(profile => {
       if (!profile) {
         errors.noprofile = 'There is no profile for this user';
@@ -87,7 +87,7 @@ router.get('/user/:user_id', (req, res) => {
   const errors = {};
 
   Profile.findOne({ user: req.params.user_id })
-    .populate('user', ['name', 'avatar'])
+    .populate('User', ['name', 'avatar'])
     // what populate is doing is bringing in user model .. and adding name , avatarto profile
     .then(profile => {
       if (!profile) {
