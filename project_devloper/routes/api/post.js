@@ -1,13 +1,24 @@
 const express = require('express');
-
-// to user router we need to bring express 
 const router = express.Router();
-
-// instead of doing app.get .. we use router.get
-// also /test .. means /api/post/test we already included it in server.js 
-// this is a Public route
+const mongoose = require('mongoose');
+const passport = require('passport');
+const Post = require('../../models/Post');
 
 router.get('/test', ( req, res ) => res.json({msg:"Post Works"
 }))
+
+// @route Post api/posts
+// @desc Create Post
+// access private
+
+router.post("/", passport.authenticate('jwt', {session: false}), (req,res) => {
+    const newPost = new Post ({
+        text: req.body.text,
+        name: req.body.name,
+        avatar: req.body.name,
+        user: req.user.id
+    });
+    newPost.save().then(post => res.json(post) )
+})
 
 module.exports = router;
