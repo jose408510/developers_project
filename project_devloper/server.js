@@ -6,7 +6,7 @@ const passport = require('passport');
 const app = express();
 const users = require('./routes/api/users');
 const profile = require('./routes/api/profiles');
-const post = require('./routes/api/post');
+const post = require('./routes/api/posts');
 
 // bodyParser middleware
 app.use(bodyParser.urlencoded({extended:true}));
@@ -29,7 +29,7 @@ mongoose
 // User Routes 
 app.use('/api/users',users)
 app.use('/api/profiles',profile)
-app.use('/api/post',post)
+app.use('/api/post',posts)
 
 
 // so you can deploy on heroku you add process.env.port
