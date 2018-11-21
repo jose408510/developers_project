@@ -15,6 +15,7 @@ import PrivateRoute from './components/common/PrivateRoute';
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
 import Dashboard from './components/dashboard/Dashboard'
+import CreateProfile from './components/create-profile/CreateProfile'
 import './App.css';
 
 // Check for token
@@ -55,6 +56,10 @@ class App extends Component {
               <Switch> 
                 {/* we needd to bring in switch from react-router.. for every private route we need to  wrap it  */}
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              </Switch>
+              <Switch> 
+                {/* we needd to bring in switch from react-router.. for every private route we need to  wrap it  */}
+              <PrivateRoute exact path="/create-profile" component={CreateProfile} />
               </Switch>
             </div> 
           <Footer/>
