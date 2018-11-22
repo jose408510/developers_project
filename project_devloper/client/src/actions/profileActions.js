@@ -43,6 +43,32 @@ export const setProfileLoading = () => {
         type: PROFILE_LOADING
     }
 }
+// add experince
+export const addExperience  = (expData , history) => dispatch => {
+    axios
+    .post('/api/profiles/experience' , expData)
+    .then(res => history.push('/dashboard'))
+    .catch(err => 
+        dispatch({
+            type: GET_ERRORS,
+            payload: err.response.data
+        })
+    )
+}
+// add experince
+export const addEducation  = (eduData , history) => dispatch => {
+    axios
+    .post('/api/profiles/education' , eduData)
+    .then(res => history.push('/dashboard'))
+    .catch(err => 
+        dispatch({
+            type: GET_ERRORS,
+            payload: err.response.data
+        })
+    )
+}
+
+
 // delete account & profile
 export const deleteAccount = () => dispatch => {
     if(window.confirm('Are you sure ? this can Not be undone!' )) {
