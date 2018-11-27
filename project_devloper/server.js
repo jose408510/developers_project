@@ -31,6 +31,7 @@ app.use('/api/users',users)
 app.use('/api/profiles',profile)
 app.use('/api/posts', posts)
 
+// Server Static assets if in production
 
 // so you can deploy on heroku you add process.env.port
 const port = process.env.PORT || 5000 

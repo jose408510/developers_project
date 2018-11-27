@@ -23,6 +23,7 @@ import Profiles from './components/profiles/Profiles'
 import Profile from './components/profile/Profile'
 import NotFound from './components/not-found/NotFound'
 import Posts from './components/posts/Posts'
+import Post from './components/post/Post'
 import './App.css';
 
 // Check for token
@@ -85,6 +86,10 @@ class App extends Component {
               <Switch> 
                 {/* we needd to bring in switch from react-router.. for every private route we need to  wrap it  */}
               <PrivateRoute exact path="/feed" component={Posts} />
+              </Switch>
+              <Switch> 
+                {/* we needd to bring in switch from react-router.. for every private route we need to  wrap it  */}
+              <PrivateRoute exact path="/post/:id" component={Post} />
               </Switch>
               <Route exact path="/not-found" component={NotFound} />
             </div> 

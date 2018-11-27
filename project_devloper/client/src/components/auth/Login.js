@@ -92,8 +92,8 @@ Login.PropTypes = {
 }
 
 
-const mapStateToProps = (state) => ({
-    auth: state.auth ,
+const mapStateToProps = state => ({
+    auth: state.auth,
     errors: state.errors
 });
 
